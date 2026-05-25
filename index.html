@@ -111,7 +111,7 @@ textarea{resize:vertical;min-height:85px;line-height:1.7}
   </div>
   <div class="row">
     <div class="field"><label class="lbl"><span class="req">*</span> رقم الجوال</label><input type="text" id="phone" maxlength="10" placeholder="10 أرقام"><div class="errtxt" id="e-phone"></div></div>
-    <div class="field"><label class="lbl"><span class="req">*</span> رقم الواتساب</label><input type="text" id="whatsapp" placeholder="+970XXXXXXXXX"><div class="errtxt" id="e-whatsapp"></div></div>
+    <div class="field"><label class="lbl">رقم الواتساب</label><input type="text" id="whatsapp" placeholder="رقم الواتساب (اختياري)"><div class="errtxt" id="e-whatsapp"></div></div>
   </div>
   <div class="row">
     <div class="field"><label class="lbl"><span class="req">*</span> البريد الإلكتروني</label><input type="email" id="email" placeholder="example@email.com" style="direction:ltr;text-align:left"><div class="errtxt" id="e-email"></div></div>
@@ -376,7 +376,6 @@ function validate(){
   req('dob','تاريخ الميلاد مطلوب');
   reqR('gender','gender');
   if(gv('phone').length!==10||!/^\d+$/.test(gv('phone'))){se('phone','رقم الجوال يجب أن يكون 10 أرقام');ok=false;}
-  if(!/^\+970\d{9}$/.test(gv('whatsapp').replace(/\s/g,''))){se('whatsapp','يجب أن يبدأ بـ +970 متبوعاً بـ 9 أرقام');ok=false;}
   if(!gv('email')||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(gv('email'))){se('email','بريد إلكتروني غير صحيح');ok=false;}
   if(!gv('governorate')){se('governorate','يرجى اختيار المحافظة');ok=false;}
   req('area','منطقة السكن مطلوبة');
