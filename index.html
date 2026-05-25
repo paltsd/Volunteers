@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نموذج طلب التطوع بمكافأة شهرية</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Tajawal',sans-serif;direction:rtl;text-align:right;background:#f0f4f8;min-height:100vh}
+.page{max-width:760px;margin:0 auto;padding:2rem 1rem 4rem}
+.header{background:linear-gradient(135deg,#1a5276 0%,#1d8aad 100%);border-radius:16px;padding:2.5rem 2rem;margin-bottom:2rem;color:white;text-align:center;box-shadow:0 4px 20px rgba(26,82,118,0.3)}
+.header .icon{font-size:3rem;margin-bottom:.75rem}
+.header h1{font-size:22px;font-weight:700;margin-bottom:.4rem}
+.header p{font-size:14px;opacity:.85}
+.section{background:white;border-radius:14px;padding:1.5rem;margin-bottom:1.25rem;box-shadow:0 1px 6px rgba(0,0,0,0.07)}
+.sec-title{font-size:15px;font-weight:700;color:#1a5276;margin-bottom:1.25rem;padding-bottom:.65rem;border-bottom:2px solid #d6eaf8;display:flex;align-items:center;gap:.6rem}
+.sec-title .num{background:#1a5276;color:white;border-radius:50%;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.row.single{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column;gap:.3rem}
+label.lbl{font-size:13px;font-weight:500;color:#34495e}
+label.lbl .req{color:#e74c3c;margin-right:2px}
+input[type=text],input[type=email],input[type=date],select,textarea{width:100%;border:1.5px solid #d5dbdb;border-radius:8px;padding:.55rem .8rem;font-size:14px;font-family:'Tajawal',sans-serif;background:white;color:#2c3e50;outline:none;transition:border-color .2s,box-shadow .2s;direction:rtl}
+input[type=text]:focus,input[type=email]:focus,input[type=date]:focus,select:focus,textarea:focus{border-color:#1a5276;box-shadow:0 0 0 3px rgba(26,82,118,0.12)}
+input.err,select.err,textarea.err{border-color:#e74c3c;box-shadow:0 0 0 3px rgba(231,76,60,0.1)}
+textarea{resize:vertical;min-height:85px;line-height:1.7}
+.radio-group{display:flex;gap:1.5rem;margin-top:.35rem;flex-wrap:wrap}
+.radio-item{display:flex;align-items:center;gap:.45rem;cursor:pointer;font-size:14px;color:#2c3e50;font-family:'Tajawal',sans-serif}
+.radio-item input[type=radio]{width:16px;height:16px;cursor:pointer;accent-color:#1a5276}
+.check-item{display:flex;align-items:center;gap:.45rem;cursor:pointer;font-size:14px;color:#2c3e50;font-family:'Tajawal',sans-serif}
+.check-item input[type=checkbox]{width:16px;height:16px;cursor:pointer;accent-color:#1a5276}
+.checks-wrap{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:.35rem}
+.vol-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.4rem}
+.vol-opt{border:1.5px solid #d5dbdb;border-radius:10px;padding:.65rem .9rem;cursor:pointer;font-size:13.5px;display:flex;align-items:center;gap:.5rem;transition:all .2s;color:#2c3e50;font-family:'Tajawal',sans-serif;background:white}
+.vol-opt:hover{border-color:#1a5276;background:#eaf4fb}
+.vol-opt.sel{border-color:#1a5276;background:#eaf4fb;color:#1a5276;font-weight:500}
+.vol-opt input{accent-color:#1a5276;width:14px;height:14px;flex-shrink:0}
+.hidden{display:none!important}
+.errtxt{font-size:11.5px;color:#e74c3c;margin-top:.2rem;min-height:16px}
+.file-zone{border:2px dashed #a9cce3;border-radius:10px;padding:1.25rem;text-align:center;cursor:pointer;font-size:13px;color:#5d8aa8;transition:all .2s;background:#f8fbfd}
+.file-zone:hover{border-color:#1a5276;background:#eaf4fb}
+.file-zone input[type=file]{display:none}
+.file-zone .fi{font-size:2rem;margin-bottom:.4rem}
+.file-name{font-size:12px;color:#1d6a96;margin-top:.4rem;font-weight:500}
+.pledge-box{background:#eaf4fb;border:1.5px solid #a9cce3;border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:.75rem}
+.pledge-box input[type=checkbox]{width:18px;height:18px;margin-top:2px;accent-color:#1a5276;flex-shrink:0;cursor:pointer}
+.pledge-box span{font-size:14px;color:#1a5276;line-height:1.6;cursor:pointer}
+.submit-btn{width:100%;background:#1a5276;color:white;border:none;border-radius:10px;padding:1rem;font-size:17px;font-weight:700;cursor:pointer;margin-top:1.25rem;font-family:'Tajawal',sans-serif;transition:background .2s,transform .1s;letter-spacing:.5px}
+.submit-btn:hover{background:#154360}
+.submit-btn:active{transform:scale(0.99)}
+.submit-btn:disabled{background:#95a5a6;cursor:not-allowed;transform:none}
+.progress-wrap{display:none;margin-top:1rem}
+.progress-bar-bg{background:#d6eaf8;border-radius:20px;height:10px;overflow:hidden}
+.progress-bar{background:#1a5276;height:10px;border-radius:20px;width:0%;transition:width .3s}
+.progress-txt{font-size:13px;color:#1a5276;margin-top:.4rem;text-align:center}
+.msg{display:none;border-radius:10px;padding:1.1rem;font-size:15px;margin-top:1rem;text-align:center;font-weight:500}
+.msg.success{background:#eafaf1;color:#1e8449;border:1.5px solid #a9dfbf}
+.msg.error{background:#fdedec;color:#922b21;border:1.5px solid #f1948a}
+@media(max-width:540px){.row{grid-template-columns:1fr}.vol-grid{grid-template-columns:1fr}}
+.success-screen{display:none;position:fixed;inset:0;background:linear-gradient(135deg,#1a5276 0%,#1d8aad 100%);z-index:9999;align-items:center;justify-content:center;padding:1.5rem}
+.success-screen.show{display:flex}
+.s-card{background:white;border-radius:24px;padding:2.5rem 2rem;max-width:460px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,0.25);text-align:center}
+.s-icon{font-size:4.5rem;margin-bottom:1rem;animation:popIn .5s ease}
+.s-card h2{color:#1a5276;font-size:24px;font-weight:700;margin-bottom:.75rem}
+.s-card p{color:#555;font-size:15px;line-height:1.8;margin-bottom:1.5rem}
+.fb-btn{display:inline-flex;align-items:center;gap:.65rem;background:#1877F2;color:white;text-decoration:none;border-radius:12px;padding:.85rem 1.75rem;font-size:16px;font-weight:700;font-family:'Tajawal',sans-serif;box-shadow:0 6px 20px rgba(24,119,242,0.45);transition:transform .15s,box-shadow .15s}
+.fb-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(24,119,242,0.5)}
+.fb-btn svg{width:26px;height:26px;flex-shrink:0}
+.fb-label{font-size:13px;color:#888;margin-top:1rem}
+@keyframes popIn{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+/* شاشة النجاح الكاملة */
+.success-screen{display:none;position:fixed;inset:0;background:linear-gradient(135deg,#1a5276 0%,#1d8aad 100%);z-index:9999;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem}
+.success-screen.show{display:flex}
+.success-screen .s-icon{font-size:5rem;margin-bottom:1.5rem;animation:popIn .5s ease}
+.success-screen h2{color:white;font-size:26px;font-weight:700;margin-bottom:.75rem}
+.success-screen p{color:rgba(255,255,255,0.88);font-size:16px;line-height:1.8;max-width:400px}
+.success-screen .s-card{background:white;border-radius:20px;padding:2.5rem 2rem;max-width:460px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.2)}
+.success-screen .s-card h2{color:#1a5276}
+.success-screen .s-card p{color:#555}
+.success-screen .ref{background:#eaf4fb;border-radius:10px;padding:.75rem 1.25rem;margin-top:1.25rem;font-size:13px;color:#1a5276;font-weight:500}
+@keyframes popIn{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="icon">🤝</div>
+  <h1>نموذج طلب التطوع بمكافأة شهرية</h1>
+  <p>يرجى تعبئة جميع الحقول المطلوبة بدقة وصدق</p>
+</div>
+
+<!-- 1 -->
+<div class="section">
+  <div class="sec-title"><span class="num">١</span> البيانات الشخصية</div>
+  <div class="row">
+    <div class="field"><label class="lbl"><span class="req">*</span> الاسم الرباعي</label><input type="text" id="fullname" placeholder="الاسم الأول والثاني والثالث والرابع"><div class="errtxt" id="e-fullname"></div></div>
+    <div class="field"><label class="lbl"><span class="req">*</span> رقم الهوية</label><input type="text" id="idnum" maxlength="9" placeholder="9 أرقام"><div class="errtxt" id="e-idnum"></div></div>
+  </div>
+  <div class="row">
+    <div class="field"><label class="lbl"><span class="req">*</span> تاريخ الميلاد</label><input type="date" id="dob"><div class="errtxt" id="e-dob"></div></div>
+    <div class="field"><label class="lbl"><span class="req">*</span> الجنس</label>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="gender" value="ذكر"> ذكر</label>
+        <label class="radio-item"><input type="radio" name="gender" value="أنثى"> أنثى</label>
+      </div>
+      <div class="errtxt" id="e-gender"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="field"><label class="lbl"><span class="req">*</span> رقم الجوال</label><input type="text" id="phone" maxlength="10" placeholder="10 أرقام"><div class="errtxt" id="e-phone"></div></div>
+    <div class="field"><label class="lbl"><span class="req">*</span> رقم الواتساب</label><input type="text" id="whatsapp" placeholder="+970XXXXXXXXX"><div class="errtxt" id="e-whatsapp"></div></div>
+  </div>
+  <div class="row">
+    <div class="field"><label class="lbl"><span class="req">*</span> البريد الإلكتروني</label><input type="email" id="email" placeholder="example@email.com" style="direction:ltr;text-align:left"><div class="errtxt" id="e-email"></div></div>
+    <div class="field"><label class="lbl"><span class="req">*</span> المحافظة</label>
+      <select id="governorate">
+        <option value="">-- اختر المحافظة --</option>
+        <option>شمال غزة</option><option>غزة</option><option>الوسطى</option><option>خانيونس</option><option>رفح</option>
+      </select>
+      <div class="errtxt" id="e-governorate"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="field"><label class="lbl"><span class="req">*</span> منطقة السكن الحالية</label><input type="text" id="area" placeholder="الحي / المنطقة"><div class="errtxt" id="e-area"></div></div>
+    <div class="field"><label class="lbl"><span class="req">*</span> هل تقيم داخل مخيم نزوح حاليًا؟</label>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="camp" value="نعم"> نعم</label>
+        <label class="radio-item"><input type="radio" name="camp" value="لا"> لا</label>
+      </div>
+      <div class="errtxt" id="e-camp"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="section">
+  <div class="sec-title"><span class="num">٢</span> المؤهل العلمي</div>
+  <div class="row">
+    <div class="field"><label class="lbl"><span class="req">*</span> المؤهل العلمي</label>
+      <select id="edu">
+        <option value="">-- اختر --</option>
+        <option>دبلوم</option><option>بكالوريوس</option><option>ماجستير</option><option>أخرى</option>
+      </select>
+      <div class="errtxt" id="e-edu"></div>
+    </div>
+    <div class="field"><label class="lbl"><span class="req">*</span> التخصص</label><input type="text" id="major" placeholder="مثال: علم النفس، الإعلام..."><div class="errtxt" id="e-major"></div></div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="section">
+  <div class="sec-title"><span class="num">٣</span> مجال التطوع المطلوب</div>
+  <label class="lbl" style="display:block;margin-bottom:.6rem"><span class="req">*</span> اختر مجالاً واحداً فقط</label>
+  <div class="vol-grid">
+    <label class="vol-opt"><input type="radio" name="vol" value="الدعم النفسي والاجتماعي"> الدعم النفسي والاجتماعي</label>
+    <label class="vol-opt"><input type="radio" name="vol" value="الحماية والتوعية المجتمعية والصحية"> الحماية والتوعية المجتمعية والصحية</label>
+    <label class="vol-opt"><input type="radio" name="vol" value="التنسيق والمتابعة الميدانية"> التنسيق والمتابعة الميدانية</label>
+    <label class="vol-opt"><input type="radio" name="vol" value="الإعلام والتوثيق والتغطية الميدانية"> الإعلام والتوثيق والتغطية الميدانية</label>
+    <label class="vol-opt"><input type="radio" name="vol" value="إدخال البيانات والأعمال الإدارية"> إدخال البيانات والأعمال الإدارية</label>
+    <label class="vol-opt"><input type="radio" name="vol" value="الأنشطة الرياضية والترفيهية"> الأنشطة الرياضية والترفيهية</label>
+    <label class="vol-opt" style="grid-column:1/-1"><input type="radio" name="vol" value="الدعم اللوجستي والمساندة الميدانية"> الدعم اللوجستي والمساندة الميدانية</label>
+  </div>
+  <div class="errtxt" id="e-vol"></div>
+</div>
+
+<!-- 4 -->
+<div class="section">
+  <div class="sec-title"><span class="num">٤</span> الخبرات والمهارات</div>
+  <div class="row single" style="margin-bottom:.75rem">
+    <div class="field"><label class="lbl"><span class="req">*</span> هل لديك خبرة سابقة في العمل الإنساني أو التطوعي؟</label>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="prevexp" value="نعم" id="prevexp-yes"> نعم</label>
+        <label class="radio-item"><input type="radio" name="prevexp" value="لا"> لا</label>
+      </div>
+      <div class="errtxt" id="e-prevexp"></div>
+    </div>
+  </div>
+  <div id="exp-detail" class="hidden row single">
+    <div class="field"><label class="lbl"><span class="req">*</span> اذكر اسم المؤسسة وطبيعة العمل</label><textarea id="expdetail" placeholder="مثال: عملت في مؤسسة X بوصفة منسق ميداني..."></textarea><div class="errtxt" id="e-expdetail"></div></div>
+  </div>
+  <div class="row">
+    <div class="field"><label class="lbl"><span class="req">*</span> عدد سنوات الخبرة</label>
+      <select id="expyears">
+        <option value="">-- اختر --</option>
+        <option>أقل من سنة</option><option>1–3 سنوات</option><option>أكثر من 3 سنوات</option>
+      </select>
+      <div class="errtxt" id="e-expyears"></div>
+    </div>
+    <div class="field"><label class="lbl"><span class="req">*</span> هل لديك خبرة في العمل الميداني؟</label>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="fieldexp" value="نعم"> نعم</label>
+        <label class="radio-item"><input type="radio" name="fieldexp" value="لا"> لا</label>
+      </div>
+      <div class="errtxt" id="e-fieldexp"></div>
+    </div>
+  </div>
+  <div id="skills-section" class="hidden row single">
+    <div class="field">
+      <label class="lbl"><span class="req">*</span> هل تجيد استخدام:</label>
+      <div class="checks-wrap">
+        <label class="check-item"><input type="checkbox" name="skills" value="Microsoft Word"> Microsoft Word</label>
+        <label class="check-item"><input type="checkbox" name="skills" value="Excel"> Excel</label>
+        <label class="check-item"><input type="checkbox" name="skills" value="Google Forms"> Google Forms</label>
+        <label class="check-item"><input type="checkbox" name="skills" value="كتابة التقارير"> كتابة التقارير</label>
+        <label class="check-item"><input type="checkbox" name="skills" value="التصوير والتوثيق"> التصوير والتوثيق</label>
+      </div>
+      <div class="errtxt" id="e-skills"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="section">
+  <div class="sec-title"><span class="num">٥</span> الجاهزية للعمل</div>
+  <div class="row">
+    <div class="field"><label class="lbl"><span class="req">*</span> هل تستطيع العمل الميداني داخل مخيمات النزوح؟</label>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="fieldwork" value="نعم"> نعم</label>
+        <label class="radio-item"><input type="radio" name="fieldwork" value="لا"> لا</label>
+      </div>
+      <div class="errtxt" id="e-fieldwork"></div>
+    </div>
+    <div class="field"><label class="lbl"><span class="req">*</span> هل تستطيع الالتزام بفترة التطوع كاملة؟</label>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="commit" value="نعم"> نعم</label>
+        <label class="radio-item"><input type="radio" name="commit" value="لا"> لا</label>
+      </div>
+      <div class="errtxt" id="e-commit"></div>
+    </div>
+  </div>
+  <div class="row single">
+    <div class="field"><label class="lbl"><span class="req">*</span> لماذا ترغب بالانضمام لهذه الفرصة؟</label><textarea id="whyjoin" placeholder="إجابة قصيرة..."></textarea><div class="errtxt" id="e-whyjoin"></div></div>
+  </div>
+  <div class="row single">
+    <div class="field"><label class="lbl"><span class="req">*</span> ما أكثر مجال ترى نفسك مناسبًا له ولماذا؟</label><textarea id="bestfield" placeholder="إجابة قصيرة..."></textarea><div class="errtxt" id="e-bestfield"></div></div>
+  </div>
+  <div class="row single">
+    <div class="field"><label class="lbl"><span class="req">*</span> اذكر موقفًا تعاملت فيه مع ضغط أو عمل ميداني</label><textarea id="situation" placeholder="إجابة قصيرة..."></textarea><div class="errtxt" id="e-situation"></div></div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="section">
+  <div class="sec-title"><span class="num">٦</span> إرفاق الملفات</div>
+  <div class="row single" style="margin-bottom:1rem">
+    <div class="field">
+      <label class="lbl"><span class="req">*</span> السيرة الذاتية (PDF فقط)</label>
+      <label class="file-zone" id="cv-zone">
+        <input type="file" id="cv-file" accept=".pdf">
+        <div class="fi">📄</div>
+        انقر لرفع السيرة الذاتية — PDF فقط
+        <div class="file-name" id="cv-name"></div>
+      </label>
+      <div class="errtxt" id="e-cv"></div>
+    </div>
+  </div>
+  <div class="row single">
+    <div class="field">
+      <label class="lbl">شهادات داعمة (اختياري)</label>
+      <label class="file-zone">
+        <input type="file" id="cert-file" accept=".pdf,.jpg,.jpeg,.png" multiple>
+        <div class="fi">📎</div>
+        انقر لرفع الشهادات — PDF أو صورة (اختياري)
+        <div class="file-name" id="cert-name"></div>
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- تعهد -->
+<div class="section">
+  <label class="pledge-box" style="cursor:pointer">
+    <input type="checkbox" id="pledge">
+    <span>☑️ أتعهد بأن جميع البيانات المدخلة صحيحة وأتحمل المسؤولية الكاملة في حال ثبوت خلاف ذلك.</span>
+  </label>
+  <div class="errtxt" id="e-pledge"></div>
+  <button class="submit-btn" id="submit-btn" onclick="submitForm()">إرسال الطلب ✓</button>
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-bar-bg"><div class="progress-bar" id="progress-bar"></div></div>
+    <div class="progress-txt" id="progress-txt">جاري رفع الملفات...</div>
+  </div>
+  <div class="msg success" id="msg-success">✅ تم إرسال طلبك بنجاح! سيتم التواصل معك قريبًا.</div>
+  <div class="msg error" id="msg-error">❌ حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.</div>
+</div>
+
+</div>
+
+<!-- شاشة النجاح -->
+<div class="success-screen" id="success-screen">
+  <div class="s-card">
+    <div class="s-icon">✅</div>
+    <h2>تم إرسال طلبك بنجاح!</h2>
+    <p>سيتم التواصل لاحقًا مع المرشحين الذين تنطبق عليهم الشروط والمعايير المطلوبة، وذلك لاستكمال إجراءات التقييم والمقابلات.</p>
+    <a class="fb-btn" href="https://www.facebook.com/paltsd.org" target="_blank">
+      <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+      </svg>
+      للمزيد من الاستفسار
+    </a>
+    <div class="fb-label">facebook.com/paltsd.org</div>
+  </div>
+</div>
+
+<script>
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbyv4NqZpz5sB1y6MjA908Qysjd9R47T_ck3TpdpbewANb5jtUrFo8CLDMurf1tWsTop/exec";
+
+async function checkDuplicateId(idnum) {
+  try {
+    const res = await fetch(SHEET_URL + '?checkId=' + encodeURIComponent(idnum));
+    const json = await res.json();
+    return json.exists === true;
+  } catch(e) {
+    return false;
+  }
+}
+
+// vol options
+document.querySelectorAll('.vol-opt').forEach(opt=>{
+  opt.addEventListener('click',()=>{
+    document.querySelectorAll('.vol-opt').forEach(o=>o.classList.remove('sel'));
+    opt.classList.add('sel');
+    checkSkills();
+  });
+});
+
+// prevexp toggle
+document.querySelectorAll('input[name="prevexp"]').forEach(r=>{
+  r.addEventListener('change',()=>{
+    const d=document.getElementById('exp-detail');
+    r.value==='نعم'?d.classList.remove('hidden'):d.classList.add('hidden');
+  });
+});
+
+function checkSkills(){
+  const v=document.querySelector('input[name="vol"]:checked');
+  const s=document.getElementById('skills-section');
+  v&&v.value==='إدخال البيانات والأعمال الإدارية'?s.classList.remove('hidden'):s.classList.add('hidden');
+}
+
+document.getElementById('cv-file').addEventListener('change',function(){
+  document.getElementById('cv-name').textContent=this.files[0]?.name||'';
+});
+document.getElementById('cert-file').addEventListener('change',function(){
+  document.getElementById('cert-name').textContent=Array.from(this.files).map(f=>f.name).join('، ');
+});
+
+function gv(id){return(document.getElementById(id)||{}).value?.trim()||'';}
+function gr(name){const x=document.querySelector(`input[name="${name}"]:checked`);return x?x.value:'';}
+function se(id,msg){
+  const e=document.getElementById('e-'+id);if(e)e.textContent=msg;
+  const i=document.getElementById(id);if(i){msg?i.classList.add('err'):i.classList.remove('err');}
+}
+function clearAll(){
+  document.querySelectorAll('.errtxt').forEach(e=>e.textContent='');
+  document.querySelectorAll('.err').forEach(e=>e.classList.remove('err'));
+}
+
+function scrollToFirstError(){
+  const firstErr=document.querySelector('.errtxt:not(:empty), .err');
+  if(firstErr){
+    firstErr.scrollIntoView({behavior:'smooth',block:'center'});
+    const inp=firstErr.classList.contains('err')?firstErr:firstErr.previousElementSibling;
+    if(inp&&inp.focus)setTimeout(()=>inp.focus(),400);
+  }
+}
+
+function validate(){
+  clearAll();let ok=true;
+  const req=(id,msg)=>{if(!gv(id)){se(id,msg||'هذا الحقل مطلوب');ok=false;}};
+  const reqR=(name,eid,msg)=>{if(!gr(name)){const e=document.getElementById('e-'+eid);if(e)e.textContent=msg||'يرجى الاختيار';ok=false;}};
+
+  if(!gv('fullname')||gv('fullname').split(' ').filter(w=>w).length<4){se('fullname','يرجى إدخال الاسم الرباعي كاملاً');ok=false;}
+  if(gv('idnum').length!==9||!/^\d+$/.test(gv('idnum'))){se('idnum','رقم الهوية يجب أن يكون 9 أرقام');ok=false;}
+  req('dob','تاريخ الميلاد مطلوب');
+  reqR('gender','gender');
+  if(gv('phone').length!==10||!/^\d+$/.test(gv('phone'))){se('phone','رقم الجوال يجب أن يكون 10 أرقام');ok=false;}
+  if(!/^\+970\d{9}$/.test(gv('whatsapp').replace(/\s/g,''))){se('whatsapp','يجب أن يبدأ بـ +970 متبوعاً بـ 9 أرقام');ok=false;}
+  if(!gv('email')||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(gv('email'))){se('email','بريد إلكتروني غير صحيح');ok=false;}
+  if(!gv('governorate')){se('governorate','يرجى اختيار المحافظة');ok=false;}
+  req('area','منطقة السكن مطلوبة');
+  reqR('camp','camp');
+  if(!gv('edu')){se('edu','المؤهل العلمي مطلوب');ok=false;}
+  req('major','التخصص مطلوب');
+  if(!gr('vol')){document.getElementById('e-vol').textContent='يرجى اختيار مجال التطوع';ok=false;}
+  reqR('prevexp','prevexp');
+  if(gr('prevexp')==='نعم'&&!gv('expdetail')){se('expdetail','يرجى ذكر المؤسسة وطبيعة العمل');ok=false;}
+  if(!gv('expyears')){se('expyears','يرجى اختيار عدد سنوات الخبرة');ok=false;}
+  reqR('fieldexp','fieldexp');
+  if(gr('vol')==='إدخال البيانات والأعمال الإدارية'){
+    if(!document.querySelectorAll('input[name="skills"]:checked').length){se('skills','يرجى اختيار مهارة واحدة على الأقل');ok=false;}
+  }
+  reqR('fieldwork','fieldwork');
+  reqR('commit','commit');
+  req('whyjoin','يرجى كتابة إجابتك');
+  req('bestfield','يرجى كتابة إجابتك');
+  req('situation','يرجى كتابة إجابتك');
+  if(!document.getElementById('cv-file').files.length){se('cv','السيرة الذاتية مطلوبة');ok=false;}
+  if(!document.getElementById('pledge').checked){document.getElementById('e-pledge').textContent='يجب الموافقة على التعهد للمتابعة';ok=false;}
+  if(!ok) setTimeout(scrollToFirstError, 50);
+  return ok;
+}
+
+// تحويل ملف إلى base64
+function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=()=>resolve(reader.result.split(',')[1]);
+    reader.onerror=reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function setProgress(pct,txt){
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('progress-txt').textContent=txt;
+}
+
+async function submitForm(){
+  if(!validate())return;
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;
+  document.getElementById('progress-wrap').style.display='block';
+  setProgress(5,'جاري التحقق من رقم الهوية...');
+
+  const isDuplicate = await checkDuplicateId(gv('idnum'));
+  if(isDuplicate){
+    se('idnum','رقم الهوية هذا مسجّل مسبقاً، لا يمكن التقديم مرتين');
+    document.getElementById('progress-wrap').style.display='none';
+    btn.disabled=false;
+    document.getElementById('idnum').scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+
+  setProgress(10,'جاري تحضير الملفات...');
+
+  try{
+    // تحويل السيرة الذاتية
+    const cvFileEl=document.getElementById('cv-file');
+    const cvBase64=await fileToBase64(cvFileEl.files[0]);
+    setProgress(35,'جاري رفع السيرة الذاتية...');
+
+    // تحويل الشهادات إن وجدت
+    const certFileEl=document.getElementById('cert-file');
+    const certFiles=[];
+    for(let i=0;i<certFileEl.files.length;i++){
+      const b64=await fileToBase64(certFileEl.files[i]);
+      certFiles.push({name:certFileEl.files[i].name,data:b64});
+    }
+    setProgress(60,'جاري إرسال البيانات...');
+
+    const skills=Array.from(document.querySelectorAll('input[name="skills"]:checked')).map(c=>c.value).join('، ');
+
+    const payload={
+      timestamp:new Date().toLocaleString('ar'),
+      fullname:gv('fullname'), idnum:gv('idnum'), dob:gv('dob'), gender:gr('gender'),
+      phone:gv('phone'), whatsapp:gv('whatsapp'), email:gv('email'),
+      governorate:gv('governorate'), area:gv('area'), camp:gr('camp'),
+      edu:gv('edu'), major:gv('major'), vol:gr('vol'),
+      prevexp:gr('prevexp'), expdetail:gv('expdetail'), expyears:gv('expyears'),
+      fieldexp:gr('fieldexp'), skills,
+      fieldwork:gr('fieldwork'), commit:gr('commit'),
+      whyjoin:gv('whyjoin'), bestfield:gv('bestfield'), situation:gv('situation'),
+      cvFile:cvBase64,
+      cvFileName:cvFileEl.files[0].name,
+      certFiles:certFiles
+    };
+
+    let res, resText;
+    try {
+      res = await fetch(SHEET_URL, {
+        method: 'POST',
+        headers: {'Content-Type': 'text/plain'},
+        body: JSON.stringify(payload)
+      });
+      resText = await res.text();
+    } catch(fetchErr) {
+      // CORS أو خطأ شبكة — جرب no-cors كبديل
+      await fetch(SHEET_URL, {method:'POST', body:JSON.stringify(payload), mode:'no-cors'});
+      resText = 'ok';
+    }
+
+    if(resText && resText.toLowerCase().includes('error')) {
+      throw new Error(resText);
+    }
+
+    setProgress(100,'تم الإرسال بنجاح!');
+    setTimeout(()=>{
+      document.getElementById('progress-wrap').style.display='none';
+      document.getElementById('success-screen').classList.add('show');
+    },500);
+
+  }catch(err){
+    console.error('خطأ في الإرسال:', err);
+    document.getElementById('msg-error').style.display='block';
+    document.getElementById('msg-error').textContent = '❌ حدث خطأ: ' + (err.message || 'يرجى المحاولة مرة أخرى');
+    document.getElementById('progress-wrap').style.display='none';
+    btn.disabled=false;
+  }
+}
+</script>
+</body>
+</html>
