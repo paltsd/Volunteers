@@ -111,7 +111,15 @@ textarea{resize:vertical;min-height:85px;line-height:1.7}
   </div>
   <div class="row">
     <div class="field"><label class="lbl"><span class="req">*</span> رقم الجوال</label><input type="text" id="phone" maxlength="10" placeholder="10 أرقام"><div class="errtxt" id="e-phone"></div></div>
-    <div class="field"><label class="lbl">رقم الواتساب</label><input type="text" id="whatsapp" placeholder="رقم الواتساب (اختياري)"><div class="errtxt" id="e-whatsapp"></div></div>
+    <div class="field"><label class="lbl">رقم الواتساب</label>
+      <div style="display:flex;gap:.4rem">
+        <select id="whatsapp-code" style="width:110px;flex-shrink:0">
+          <option value="+970">+970</option>
+          <option value="+972">+972</option>
+        </select>
+        <input type="text" id="whatsapp" placeholder="9 أرقام (اختياري)" maxlength="9" style="flex:1">
+      </div>
+      <div class="errtxt" id="e-whatsapp"></div></div>
   </div>
   <div class="row">
     <div class="field"><label class="lbl"><span class="req">*</span> البريد الإلكتروني</label><input type="email" id="email" placeholder="example@email.com" style="direction:ltr;text-align:left"><div class="errtxt" id="e-email"></div></div>
@@ -379,6 +387,7 @@ function validate(){
   if(!gv('email')||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(gv('email'))){se('email','بريد إلكتروني غير صحيح');ok=false;}
   if(!gv('governorate')){se('governorate','يرجى اختيار المحافظة');ok=false;}
   req('area','منطقة السكن مطلوبة');
+  if(gv('whatsapp')&&(!/^\d{9}$/.test(gv('whatsapp')))){se('whatsapp','أدخل 9 أرقام بعد كود الدولة');ok=false;}
   reqR('camp','camp');
   if(!gv('edu')){se('edu','المؤهل العلمي مطلوب');ok=false;}
   req('major','التخصص مطلوب');
@@ -454,7 +463,7 @@ async function submitForm(){
     const payload={
       timestamp:new Date().toLocaleString('ar'),
       fullname:gv('fullname'), idnum:gv('idnum'), dob:gv('dob'), gender:gr('gender'),
-      phone:gv('phone'), whatsapp:gv('whatsapp'), email:gv('email'),
+      phone:gv('phone'), whatsapp:gv('whatsapp')?(document.getElementById('whatsapp-code').value+gv('whatsapp')):'', email:gv('email'),
       governorate:gv('governorate'), area:gv('area'), camp:gr('camp'),
       edu:gv('edu'), major:gv('major'), vol:gr('vol'),
       prevexp:gr('prevexp'), expdetail:gv('expdetail'), expyears:gv('expyears'),
